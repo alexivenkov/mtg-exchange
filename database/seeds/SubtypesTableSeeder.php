@@ -2,13 +2,13 @@
 
 use Illuminate\Database\Seeder;
 
-class SubTypesTableSeeder extends Seeder
+class SubtypesTableSeeder extends Seeder
 {
     /**
      * @return void
      */
     public function run()
     {
-        factory(App\Models\SubType::class, 50)->create();
+        factory(App\Models\Subtype::class, 50)->create();
     }
 }
