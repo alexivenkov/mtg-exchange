@@ -14,9 +14,11 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::truncate();
         \App\Models\Card::truncate();
         \App\Models\Set::truncate();
+        \App\Models\SubType::truncate();
 
         $this->call(UsersTableSeeder::class);
         $this->call(CardsTableSeeder::class);
         $this->call(SetsTableSeeder::class);
+        $this->call(SubTypesTableSeeder::class);
     }
 }
