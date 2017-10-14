@@ -1,0 +1,1 @@
+## Magic The Gathering exchange app on Laravel 5.5
