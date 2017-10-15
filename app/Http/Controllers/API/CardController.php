@@ -2,18 +2,18 @@
 
 use App\Http\Controllers\Controller;
 use App\Models\Card;
-use App\Models\Set;
-use App\Models\Subtype;
-use App\Models\Type;
 use App\Repositories\CardRepository;
 use App\Repositories\SetRepository;
 use App\Repositories\SubtypeRepository;
 use App\Repositories\TypeRepository;
+use App\Repositories\UserRepository;
 use App\Requests\SearchCardRequest;
 use App\Services\API\DeckbrewGateway;
 
 class CardController extends Controller
 {
+    protected $userRepository;
+
     protected $cardRepository;
 
     protected $setRepository;
@@ -23,11 +23,13 @@ class CardController extends Controller
     protected $subTypeRepository;
 
     public function __construct(
+        UserRepository $userRepository,
         CardRepository $cardRepository,
         SetRepository $setRepository,
         TypeRepository $typeRepository,
         SubtypeRepository $subtypeRepository
     ) {
+        $this->userRepository = $userRepository;
         $this->cardRepository = $cardRepository;
         $this->setRepository = $setRepository;
         $this->typeRepository = $typeRepository;
@@ -57,6 +59,8 @@ class CardController extends Controller
             $this->cardRepository->storeCardTypes($card, $types);
             $this->cardRepository->storeCardSubtypes($card, $subtypes);
         }
+
+        $this->userRepository->storeCardViaAPI($card, $request->get('count'));
 
         return response()->json(['name' => $card->name]);
     }

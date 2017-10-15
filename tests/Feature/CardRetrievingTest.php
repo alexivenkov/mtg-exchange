@@ -25,7 +25,9 @@ class CardRetrievingTest extends TestCase
         $this->actingAs($user, self::AUTH_DRIVER);
 
         foreach ($cards as $card) {
-            $this->get("/api/v1/add?q=$card", [
+            $count = mt_rand(1,4);
+
+            $this->get("/api/v1/add?q=$card&count=$count", [
                 'Accept' => 'application/json'
             ])
                 ->assertJson([
