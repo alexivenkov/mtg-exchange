@@ -6,6 +6,6 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
     });
 
     Route::group(['namespace' => 'API'], function () {
-        Route::get('search', 'CardController@addCard');
+        Route::get('add', 'CardController@addCard');
     });
 });

@@ -18,7 +18,7 @@ class CardRetrievingTest extends TestCase
 
         $this->actingAs($user, self::AUTH_DRIVER)
 
-            ->get('/api/v1/search?q=carnage+tyrant', [
+            ->get('/api/v1/add?q=carnage+tyrant', [
                 'Accept' => 'application/json'
             ])
             ->assertJson([
