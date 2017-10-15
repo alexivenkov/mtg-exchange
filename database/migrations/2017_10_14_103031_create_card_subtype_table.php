@@ -18,7 +18,7 @@ class CreateCardSubtypeTable extends Migration
             $table->unsignedInteger('subtype_id');
             $table->timestamps();
 
-            $table->unique('card_id', 'subtype_id');
+            $table->unique(['card_id', 'subtype_id']);
         });
     }
 

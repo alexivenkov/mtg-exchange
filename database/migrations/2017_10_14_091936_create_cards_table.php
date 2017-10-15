@@ -24,7 +24,7 @@ class CreateCardsTable extends Migration
             $table->tinyInteger('toughness')->nullable();
             $table->integer('set_id');
             $table->string('rarity');
-            $table->text('flavor');
+            $table->text('flavor')->nullable();
             $table->string('image');
             $table->string('artist');
             $table->string('color')->nullable();

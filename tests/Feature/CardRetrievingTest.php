@@ -15,14 +15,22 @@ class CardRetrievingTest extends TestCase
     public function it_can_response_with_card_data()
     {
         $user = factory(User::class)->create();
+        $cards = [
+            'Carnage Tyrant',
+            'Shapers of Nature',
+            'Prying Blade',
+            'New Horizons'
+        ];
 
-        $this->actingAs($user, self::AUTH_DRIVER)
+        $this->actingAs($user, self::AUTH_DRIVER);
 
-            ->get('/api/v1/add?q=carnage+tyrant', [
+        foreach ($cards as $card) {
+            $this->get("/api/v1/add?q=$card", [
                 'Accept' => 'application/json'
             ])
-            ->assertJson([
-                'name' => 'Carnage Tyrant'
-            ]);
+                ->assertJson([
+                    'name' => "$card"
+                ]);
+        }
     }
 }

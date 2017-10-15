@@ -18,7 +18,7 @@ class CreateCardTypeTable extends Migration
             $table->unsignedInteger('type_id');
             $table->timestamps();
 
-            $table->unique('card_id', 'type_id');
+            $table->unique(['card_id', 'type_id']);
         });
     }
 
