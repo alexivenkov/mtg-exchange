@@ -15,8 +15,12 @@
                                 </div>
                                 <div class="col-md-9">
                                     <ul class="list-unstyled">
+                                        <li>
+                                            Amount: {{ $card->pivot->count }}
+                                            <hr/>
+                                        </li>
                                         <li>Card Name: {{ $card->name }}</li>
-                                        <li>Mana Cost: {{ $card->costs }}</li>
+                                        {{--<li>Mana Cost: {{ $card->cost }}</li>--}}
                                         <li>CMC: {{ $card->cmc }}</li>
                                         <li>
                                             <div class="panel panel-default">

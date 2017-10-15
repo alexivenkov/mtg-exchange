@@ -9,6 +9,6 @@ class UserRepository
     {
         $user = Auth::guard('api')->user();
 
-        $user->eCards()->attach($card->id, ['count' => $count]);
+        $user->eCards()->syncWithoutDetaching([$card->id => ['count' => $count]]);
     }
 }

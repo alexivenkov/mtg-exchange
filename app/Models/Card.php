@@ -15,7 +15,9 @@ class Card extends Model
      */
     public function eUsers()
     {
-        return $this->belongsToMany(User::class, 'user_card')->withTimestamps();
+        return $this->belongsToMany(User::class, 'user_card')
+            ->withTimestamps()
+            ->withPivot('count');
     }
 
     /**

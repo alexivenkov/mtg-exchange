@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\API;
 
+use App\Events\UserAddCard;
 use App\Http\Controllers\Controller;
 use App\Models\Card;
 use App\Repositories\CardRepository;
@@ -61,6 +62,7 @@ class CardController extends Controller
         }
 
         $this->userRepository->storeCardViaAPI($card, $request->get('count'));
+        event(new UserAddCard($card));
 
         return response()->json(['name' => $card->name]);
     }

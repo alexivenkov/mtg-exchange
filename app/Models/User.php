@@ -32,6 +32,8 @@ class User extends Authenticatable
      */
     public function eCards()
     {
-        return $this->belongsToMany(Card::class, 'user_card')->withTimestamps();
+        return $this->belongsToMany(Card::class, 'user_card')
+            ->withTimestamps()
+            ->withPivot('count');
     }
 }
