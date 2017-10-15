@@ -9,3 +9,12 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
         Route::get('add', 'CardController@addCard');
     });
 });
+
+Route::any('/upload', function () {
+    $file = request()->file('file');
+    $file_path = $file->store('test');
+    return response()->json([
+        'message'      => 'api dump',
+        'request_data' => ['path' => $file_path],
+    ]);
+});
