@@ -11,7 +11,7 @@
 <h1>Image preview</h1>
 
 @if(isset($image_name))
-    <img src="{{ asset('storage/test/' . $image_name) }}" alt="картинка">
+    <img src="{{ $image_name }}" alt="картинка">
 @else
     <p>Pls provide an image name with get param 'image_name'</p>
 @endif

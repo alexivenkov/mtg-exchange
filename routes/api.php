@@ -12,7 +12,7 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
 
 Route::any('/upload', function () {
     $file = request()->file('file');
-    $file_path = $file->store('test');
+    $file_path = $file->store('test', 'public');
     return response()->json([
         'message'      => 'api dump',
         'request_data' => ['path' => $file_path],
