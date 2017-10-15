@@ -17,4 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'DashboardController@index')->name('home');
+
+Route::get('/image', function () {
+    return view('image')->with('image_name', request('image_name'));
+});
