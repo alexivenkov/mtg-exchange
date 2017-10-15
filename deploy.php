@@ -15,9 +15,9 @@ set('bin/php', '/opt/php70/bin/php');
 set('http_user', 'www-data');
 set('http_group', 'www-data');
 
-desc('Execute artisan migrate:refresh');
-task('artisan:migrate:refresh', function () {
-    $output = run('{{bin/php}} {{release_path}}/artisan migrate:refresh --force --seed');
+desc('Execute artisan migrate:fresh');
+task('artisan:migrate:fresh', function () {
+    $output = run('{{bin/php}} {{release_path}}/artisan migrate:fresh --force --seed');
     writeln('<info>' . $output . '</info>');
 });
 
@@ -37,4 +37,4 @@ host('mtg.egodev.ru')
 after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
-before('deploy:symlink', 'artisan:migrate:refresh');
+before('deploy:symlink', 'artisan:migrate:fresh');
