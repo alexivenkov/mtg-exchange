@@ -37,4 +37,4 @@ host('mtg.egodev.ru')
 after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
-before('deploy:symlink', 'artisan:migrate:fresh');
+before('deploy:symlink', 'artisan:migrate');
