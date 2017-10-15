@@ -11,18 +11,18 @@ class Card extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function eTypes()
     {
-        return $this->hasMany(Type::class, 'card_id', 'id');
+        return $this->belongsToMany(Type::class, 'card_type')->withTimestamps();
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function eSubtypes()
     {
-        return $this->hasMany(Subtype::class, 'card_id', 'id');
+        return $this->belongsToMany(Subtype::class, 'card_subtype')->withTimestamps();
     }
 }

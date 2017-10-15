@@ -13,7 +13,7 @@ abstract class API
     public function __construct()
     {
         $this->client = new Client([
-            'base_uri' => self::BASE_URI
+            'base_uri' => static::BASE_URI
         ]);
     }
 
@@ -24,7 +24,7 @@ abstract class API
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function request(string $method, array $params, $maxRequests = 3)
+    public function request(string $method, array $params, $maxRequests = 3) : array
     {
         try {
             $response = $this->client->request(self::DEFAULT_REQUEST_METHOD, $method, $params);
@@ -38,6 +38,6 @@ abstract class API
             return $this->request($method, $params, $maxRequests);
         };
 
-        return $response;
+        return json_decode($response->getBody(), true);
     }
 }

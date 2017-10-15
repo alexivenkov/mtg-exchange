@@ -14,10 +14,11 @@ class CreateCardSubtypeTable extends Migration
     public function up()
     {
         Schema::create('card_subtype', function (Blueprint $table) {
-            $table->increments('id');
             $table->unsignedInteger('card_id');
             $table->unsignedInteger('subtype_id');
             $table->timestamps();
+
+            $table->unique('card_id', 'subtype_id');
         });
     }
 
