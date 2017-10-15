@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
-class HomeController extends Controller
+use App\Models\Card;
+use Illuminate\Support\Facades\Auth;
+
+class DashboardController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -23,6 +20,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $cards = Auth::user()->eCards;
+
+        return view('home', compact('cards'));
     }
 }
