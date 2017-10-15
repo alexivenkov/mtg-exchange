@@ -3,10 +3,10 @@
 class Type extends Model
 {
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function eCards()
     {
-        return $this->hasMany(Card::class, 'type_id', 'id');
+        return $this->belongsToMany(Card::class, 'card_type');
     }
 }

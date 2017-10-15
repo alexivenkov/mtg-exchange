@@ -14,7 +14,8 @@ class SearchCardRequest extends FormRequest
     {
 
         return [
-            'q' => 'required|string'
+            'q'     => 'required|string',
+            'count' => 'required|integer|min:1'
         ];
     }
 }
