@@ -14,10 +14,11 @@ class CreateCardTypeTable extends Migration
     public function up()
     {
         Schema::create('card_type', function (Blueprint $table) {
-            $table->increments('id');
             $table->unsignedInteger('card_id');
             $table->unsignedInteger('type_id');
             $table->timestamps();
+
+            $table->unique('card_id', 'type_id');
         });
     }
 
