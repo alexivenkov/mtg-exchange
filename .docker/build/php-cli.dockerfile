@@ -27,4 +27,5 @@ RUN add-apt-repository -y ppa:ondrej/php \
         php7.1-dom \
         php7.1-xml \
         php7.1-xdebug \
-        php7.1-pgsql
+        php7.1-curl \
+        php7.1-mysql

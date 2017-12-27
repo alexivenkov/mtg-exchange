@@ -32,12 +32,19 @@ services:
       working_dir: /app
       build:
         context: ./
-        dockerfile: ./.docker/build/php-cli.dockerfile
+        dockerfile: ./.docker/build/php-composer.dockerfile
       links:
         - db
       volumes:
         - .:/app
         - $HOME/.composer:/home/application/.composer
+
+  node:
+    container_name: nodejs.mtg-exchange
+    image: "node:latest"
+    working_dir: /app
+    volumes:
+      - .:/app
 
   nginx:
       container_name: nginx.mtg-exchange
