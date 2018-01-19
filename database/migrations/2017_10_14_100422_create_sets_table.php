@@ -16,8 +16,6 @@ class CreateSetsTable extends Migration
         Schema::create('sets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('name_rus')->unique()->nullable();
-            $table->string('deckbrew_id')->unique();
             $table->timestamps();
         });
     }

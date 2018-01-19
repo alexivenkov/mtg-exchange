@@ -16,10 +16,10 @@ class CreateCardsTable extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('name_rus')->nullable();
             $table->tinyInteger('cmc');
-            $table->string('cost');
+            $table->string('mana_cost');
             $table->text('description');
+            $table->text('type_line');
             $table->tinyInteger('power')->nullable();
             $table->tinyInteger('toughness')->nullable();
             $table->integer('set_id');
@@ -28,7 +28,6 @@ class CreateCardsTable extends Migration
             $table->string('image');
             $table->string('artist');
             $table->string('color')->nullable();
-            $table->string('deckbrew_id');
             $table->timestamps();
         });
     }

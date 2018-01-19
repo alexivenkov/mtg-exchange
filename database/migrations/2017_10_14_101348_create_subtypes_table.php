@@ -16,7 +16,6 @@ class CreateSubtypesTable extends Migration
         Schema::create('subtypes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('name_rus')->nullable();
             $table->timestamps();
         });
     }
